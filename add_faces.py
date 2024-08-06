@@ -10,7 +10,7 @@ if not os.path.exists('data/'):
 video = cv2.VideoCapture(0)
 
 # Check if the video source was opened correctly
-if not video.isOpened():  # Add this check
+if not video.isOpened():  
     print("Error: Could not open video source.")
     exit()
 
@@ -52,7 +52,7 @@ cv2.destroyAllWindows()
 
 # Convert faces_data to a numpy array and flatten
 faces_data = np.asarray(faces_data)
-faces_data = faces_data.reshape((len(faces_data), -1))  # Use the actual number of collected frames
+faces_data = faces_data.reshape((len(faces_data), -1))  
 print(faces_data)
 
 if 'names.pkl' not in os.listdir('data/'):

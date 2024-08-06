@@ -27,8 +27,9 @@ knn = KNeighborsClassifier(n_neighbors=5)
 knn.fit(FACES, LABELS)
 
 # Define the size of the GUI window
-gui_width = 1400  # Set the desired width
-gui_height = 700  # Set the desired height
+
+gui_width = 1400  
+gui_height = 700  
 
 # Load and resize the background image to match the GUI size
 imgBackground = cv2.imread("background_img.png")
@@ -51,9 +52,9 @@ while True:
     ret, frame = video.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = facedetect.detectMultiScale(gray, 1.3, 5)
-    output = None  # Initialize output to None
+    output = None  
 
-    offset = 5 # Offset to move the rectangle and text to the left
+    offset = 5 
 
     for (x, y, w, h) in faces:
         crop_img = frame[y:y+h, x:x+w]
@@ -82,7 +83,7 @@ while True:
     cv2.imshow('frame', imgBackground)
     k = cv2.waitKey(1)
 
-    if output is not None:  # Ensure output is defined before using it
+    if output is not None:  
         voter_exist = check_if_exists(output[0])
         if voter_exist:
             speak("You have already voted")
@@ -100,7 +101,7 @@ while True:
                 with open("Votes.csv", "a") as csvfile:
                     writer = csv.writer(csvfile)
                     writer.writerow(COL_NAMES)
-                    attendance = [output[0], "BJP", date, timestamp]
+                    attendance = [output[0], "United Congress Party", date, timestamp]
                     writer.writerow(attendance)
             speak("Thank you for participating in the elections")
             break
@@ -117,7 +118,7 @@ while True:
                 with open("Votes.csv", "a") as csvfile:
                     writer = csv.writer(csvfile)
                     writer.writerow(COL_NAMES)
-                    attendance = [output[0], "BJP", date, timestamp]
+                    attendance = [output[0], "United Republican Front", date, timestamp]
                     writer.writerow(attendance)
             speak("Thank you for participating in the elections")
             break
@@ -134,7 +135,7 @@ while True:
                 with open("Votes.csv", "a") as csvfile:
                     writer = csv.writer(csvfile)
                     writer.writerow(COL_NAMES)
-                    attendance = [output[0], "New Independent Party", date, timestamp]
+                    attendance = [output[0], "United Left Front", date, timestamp]
                     writer.writerow(attendance)
             speak("Thank you for participating in the elections")
             break
@@ -145,13 +146,13 @@ while True:
             if exist:
                 with open("Votes.csv", "a") as csvfile:
                     writer = csv.writer(csvfile)
-                    attendance = [output[0], "BJP", date, timestamp]
+                    attendance = [output[0], "New Independent Party", date, timestamp]
                     writer.writerow(attendance)
             else:
                 with open("Votes.csv", "a") as csvfile:
                     writer = csv.writer(csvfile)
                     writer.writerow(COL_NAMES)
-                    attendance = [output[0], "BJP", date, timestamp]
+                    attendance = [output[0], "New Independent Party", date, timestamp]
                     writer.writerow(attendance)
             speak("Thank you for participating in the elections")
             break
